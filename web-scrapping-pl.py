@@ -56,7 +56,7 @@ for image_number in image_numbers:
         image_filename = f"{image_number:02d}.jpg"
 
         # Construct the complete image URL
-        image_url = base_url + image_filename + "&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2lkLnBpYW5vLmlvIiwic3ViIjoiMzM0NjY5IiwiYXVkIjoiTldyU1FhUWpGZCIsImxvZ2luX3RpbWVzdGFtcCI6IjE3MjQxNjMwNjcxMjEiLCJnaXZlbl9uYW1lIjoiSG9uYXRhbiIsImZhbWlseV9uYW1lIjoiUGFsbWEiLCJlbWFpbCI6ImhhcGFsbWFjQGdtYWlsLmNvbSIsImVtYWlsX2NvbmZpcm1hdGlvbl9yZXF1aXJlZCI6ZmFsc2UsImV4cCI6MTcyNjc5MTA2NywiaWF0IjoxNzI0MTYzMDY3LCJqdGkiOiJUSTBzQUw3SDBRc2lpc3FqIiwicGFzc3dvcmRUeXBlIjoicGFzc3dvcmQiLCJyIjp0cnVlLCJscyI6IklEIiwiZmlyc3ROYW1lIjoiSG9uYXRhbiIsImxhc3ROYW1lIjoiUGFsbWEiLCJ2YWxpZCI6dHJ1ZSwidWlkIjoiMzM0NjY5IiwiY29uZmlybWVkIjp0cnVlLCJrZXlQbCI6IlNwZFRtaGtuUkR0UDJiR2djbzh4In0.DW7KB9eT5-6ZvSN686XoeLKLYTO4S48_FCN-Xi8OyPM"
+        image_url = base_url + image_filename + "&token=example.token"
 
         # Send a GET request to retrieve the image
         response = requests.get(image_url)
@@ -99,13 +99,12 @@ if image_list:
 
             # Create an email message
             msg = EmailMessage()
-            msg["Subject"] = f"Prensa Libre for {email_date}"
-            msg["From"] = "noreply@gmail.com"
+            msg["Subject"] = f"Newspaper {email_date}"
             msg["Bcc"] = ["hapalmac@gmail.com"]
 
             # Set the email body
             msg.set_content(
-                f"Hello,\n\nPlease find attached today's Prensa Libre.\n\nBest regards."
+                f"Hello,\n\nPlease find attached today's newspaper.\n\nBest regards."
             )
 
             # Attach the PDF file to the email
@@ -114,7 +113,7 @@ if image_list:
 
             # Send the email using Gmail's SMTP server
             with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-                server.login("hapalmac@gmail.com", "dpsxnrpaovvkunew")  # Replace with your Gmail credentials
+                server.login("hapalmac@gmail.com", "example")  # Replace with your Gmail credentials
                 server.send_message(msg)
 
                 # Display a success message indicating the email was sent
